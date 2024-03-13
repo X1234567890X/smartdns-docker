@@ -29,8 +29,6 @@ RUN ARCH=$(dpkg --print-architecture) \
 
 FROM alpine:latest
 
-LABEL maintainer="dante"
-
 COPY --from=builder /usr/bin/smartdns /usr/bin/smartdns
 
 ENV TZ Asia/Shanghai
@@ -50,7 +48,5 @@ WORKDIR /etc/smartdns
 
 EXPOSE 53/udp 
 EXPOSE 53/tcp
-
-HEALTHCHECK --interval=10s --timeout=10s CMD nslookup -querytype=A www.baidu.com 127.0.0.1 | sed -n '6,7p' || exit 1
 
 ENTRYPOINT ["/root/entrypoint.sh"]
