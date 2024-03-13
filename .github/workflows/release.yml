@@ -1,4 +1,4 @@
-name: Release mosdns docker
+name: Release smartdns docker
 
 on:
   push:
